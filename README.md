@@ -12,3 +12,11 @@ Use Case:
 5.On fourth click shows both images.
 6.On fifth click control goes to first click action and so on.
 7.There should be display, counter of how many clicks happends.
+
+
+
+bower commonds
+
+npm install -g bower
+bower install <packages>
+
