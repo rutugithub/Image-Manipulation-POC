@@ -1,49 +1,118 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/jquery/dist/jquery.min.js">
-    <script src="Scripts/angular.js"></script>
-    <script src="Scripts/angular-route.js"></script>
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-</head>
-<body ng-app="ngRoutingDemo">
-    <h1>Angular Routing Demo</h1>
+<html>
+    <head>
 
-    <div ng-view>
+	 <link rel="stylesheet" href="/bower_components/bootstrap/dist/bootstrap.min.css">
+	    <link rel="stylesheet" href="/bower_components/jquery/dist/jquery.min.js">
+	    <link rel="stylesheet" href="/bower_components/bootstrap/dist/bootstrap.min.js">       
 
-    </div>
-    <script>
-        var app = angular.module('ngRoutingDemo', ['ngRoute']);
+        <script>
+            $(document).ready(function() {
+                var count = 0;
+            
+                $("#button").click(function(){
+                    if (count == 0) {
+                        $('#left-img').hide();
+                        count++;
+                    }
+                    
+                    else if (count == 1) {
+                        $("#right-img").hide();
+                        $('#left-img').show();
+                            count++;
+                    }
+                    else if (count == 2) {
+                        $("#left-img").hide();
+                            count++;
+                    }
+                    
+                    else if(count==3){
+                        $("#left-img").show();
+                        $("#right-img").show();
+                         count++;
+                        //  $("#msg").text("Cycle completed");
 
-        app.config(function ($routeProvider) {
-             
-            $routeProvider.when('/', {
-                templateUrl: '/login.html',
-                controller: 'loginController'
-            }).when('/student/:username', {
-                templateUrl: '/student.html',
-                controller: 'studentController'
-            }).otherwise({
-                redirectTo: "/"
-            });
+                         
+                    }
+                    else{
+                         count =0;
+                    }
+                })
+            }) 
 
-        app.controller("loginController", function ($scope, $location) {
-           
-            $scope.authenticate = function (username) {
-                // write authentication code here.. 
-
-                $location.path('/student/' + username)
-            };
-
-        });
-
-        app.controller("studentController", function ($scope, $routeParams) {
-            $scope.username = $routeParams.username;
-        });
-
-    });
     </script>
+
+    <script type="text/javascript">
+    var add=(function()
+        {
+            var counter=0;
+            return function()   
+            {
+                return counter +=1;
+            }
+        })();
+        
+        function myFunction()
+        {
+            document.getElementById("count").innerHTML=add();
+        }
+
+    </script>
+    </head>
+<body>
+          
+
+    <div class="container">
+            <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Image Manipulation</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                                           
+                      </ul>
+                      <!-- <button class="btn btn-danger navbar-btn" id="reset">Button</button> -->
+                    </div>
+                  </nav>
+                  
+                  <div class="container">
+                                
+            <div class="col-md-12 col-xs-12">
+                    <div id="button" style="margin-left:520px;"> 
+                            
+                        <button type="button" style="position:fixed"  class="btn btn-primary"  onclick="myFunction()">Click Me!</button><br>
+                        <br><strong style="margin:-60px;">The button was pressed <span id="count">0</span> times.</strong>
+                        </div>
+                        
+                        </div><br><br>
+        <div class="image" style="margin-top:50px">
+        <div class="row">
+            
+            <div class="col-md-6 col-xs-6">
+                
+                    <div id="left-img" style="float:right">
+                <img src="img/bike1.jpg" height="" width="" class="img-thumbnail">
+            
+            </div>
+            </div>
+            
+            <div class="col-md-6 col-xs-6">
+                    
+                   <div id="right-img">
+                <img src="img/bike2.jpg" height=""width=""class="img-thumbnail" >
+                
+            </div>
+            </div>
+            
+        </div>
+        
+    </div>
+         </div>
+      
+
+                  </div>
+                  
+                
+         
 </body>
 </html>
